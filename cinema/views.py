@@ -104,8 +104,12 @@ class MovieSessionDetailView(APIView):
                 "title": movie_session.movie.title,
                 "description": movie_session.movie.description,
                 "duration": movie_session.movie.duration,
-                "genres": [genre.name for genre in movie_session.movie.genres.all()],
-                "actors": [actor.name for actor in movie_session.movie.actors.all()],
+                "genres": [genre.name
+                           for genre in
+                           movie_session.movie.genres.all()],
+                "actors": [actor.name
+                           for actor in
+                           movie_session.movie.actors.all()],
             },
             "cinema_hall": {
                 "id": movie_session.cinema_hall.id,
