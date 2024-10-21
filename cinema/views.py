@@ -4,8 +4,14 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from django_filters import rest_framework as filters
 from rest_framework.views import APIView
-
-from cinema.models import Genre, Actor, CinemaHall, Movie, MovieSession, Order, Ticket
+from cinema.models import (
+    Genre,
+    Actor,
+    CinemaHall,
+    Movie,
+    MovieSession,
+    Order,
+    Ticket)
 
 from cinema.serializers import (
     GenreSerializer,
@@ -85,7 +91,10 @@ class MovieSessionFilter(filters.FilterSet):
 class MovieSessionDetailView(APIView):
     def get(self, request, pk):
         movie_session = get_object_or_404(MovieSession, pk=pk)
-        taken_places = Ticket.objects.filter(movie_session=movie_session).values("row", "seat")
+        taken_places = Ticket.objects.filter(
+            movie_session=movie_session).values(
+            "row",
+            "seat")
 
         response_data = {
             "id": movie_session.id,
