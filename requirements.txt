@@ -12,5 +12,5 @@ pyflakes==2.5.0
 pytz==2024.2
 six==1.16.0
 sqlparse==0.5.1
-django-filter
+django-filter>=22.1
 djangorestframework-filters
